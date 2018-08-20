@@ -11,3 +11,8 @@ Plotting image
 ./plot_all3_figure.py
 ```
 ![all3.png](all3.png)
+
+```bash
+./plot_uniprot_figure.py
+```
+![uniprot.png](uniprot.png)
