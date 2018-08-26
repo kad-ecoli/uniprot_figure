@@ -16,3 +16,8 @@ Plotting image
 ./plot_uniprot_figure.py
 ```
 ![uniprot.png](uniprot.png)
+
+```bash
+./plot_pdb_figure.py
+```
+![pdb.png](pdb.png)
