@@ -59,7 +59,7 @@ plt.figure(1,figsize=(6,4))
 plt.semilogy(uniprot_release,uniprot_list,'d-',
     clip_on=False,color='black',label=label_uniprot)
 plt.semilogy(pdb_release,pdb_list,'o-',
-    clip_on=False,color='grey',label=label_pdb)
+    clip_on=False,color='black',markerfacecolor="white",label=label_pdb)
 plt.axis([min_year,max([max(pdb_release),max(uniprot_release)]),
     min(pdb_list),max(uniprot_list)*1.1])
 plt.xlabel("Year")

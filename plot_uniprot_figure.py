@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 docstring=''' plot uniprot vs pdb and trembl vs swissprot '''
-
+import textwrap
 import matplotlib
 matplotlib.use("agg")
 from matplotlib import pylab as plt
@@ -30,13 +30,21 @@ swissprot_list=[e for i,e in enumerate(swissprot_list) if uniprot_release[i]>=mi
 trembl_list=[e for i,e in enumerate(trembl_list) if uniprot_release[i]>=min_year]
 uniprot_release=[e for e in uniprot_release if e>=min_year]
 
+#### figure legend ####
+label_uniprot='%d'%uniprot_list[-1]
+label_uniprot=','.join(textwrap.wrap(label_uniprot[::-1],3))
+label_uniprot='UniProt (%s entries)'%(label_uniprot[::-1])
+
+label_swissprot='%d'%swissprot_list[-1]
+label_swissprot=','.join(textwrap.wrap(label_swissprot[::-1],3))
+label_swissprot='Swiss-Prot (%s entries)'%(label_swissprot[::-1])
 
 #### uniprot vs pdb ####
 plt.figure(1,figsize=(6,4))
 plt.semilogy(uniprot_release,uniprot_list,'d-',clip_on=False,color='black',
-    label='UniProt (%d entries)'%uniprot_list[-1])
-plt.semilogy(uniprot_release,swissprot_list,'^-',clip_on=False,color='black',
-    label='SwissProt (%d entries)'%swissprot_list[-1])
+    label=label_uniprot)
+plt.semilogy(uniprot_release,swissprot_list,'^-',clip_on=False,color='grey',
+    label=label_swissprot)
 plt.axis([min_year,max(uniprot_release),
     min(swissprot_list)*0.9,max(uniprot_list)*1.1])
 plt.xlabel("Year")
